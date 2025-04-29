@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 void FillRand(int arr[], int const n);
 void Print(int arr[], int const n);
@@ -12,23 +12,23 @@ void main()
 {
 	setlocale(LC_ALL, "ru");
 	int n;
-	cout << "Ââèäèòå ðàçìåð ìàññèâà: "; cin >> n;
+	cout << "Ð’Ð²Ð¸Ð´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: "; cin >> n;
 	int* arr = new int[n];
 	FillRand(arr, n);
 	Print(arr, n);
 	push_front(arr, n);
 	Print(arr, n);
 	int var;
-	cout << "Ââèäèòå çíà÷åíèå ýëåìåíòà: "; cin >> var;
+	cout << "Ð’Ð²Ð¸Ð´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°: "; cin >> var;
 	int index;
-	cout << "Ââèäèòå èíäåêñ ìàññèâà: "; cin >> index;
+	cout << "Ð’Ð²Ð¸Ð´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ Ð¼Ð°ÑÑÐ¸Ð²Ð°: "; cin >> index;
 	insert(arr, n, var, index);
 	Print(arr, n);
 	pop_back(arr, n);
 	Print(arr, n);
 	pop_front(arr, n);
 	Print(arr, n);
-	cout << "Óêàæèòå èíäåêñ óäàëÿåìîãî ýëåìåíòà: "; cin >> index;
+	cout << "Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°: "; cin >> index;
 	erase(arr, n, index);
 	Print(arr, n);
 
