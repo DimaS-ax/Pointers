@@ -52,17 +52,23 @@ void Print(int arr[], int const n)
 void push_front(int*& arr, int& n)
 {
 	int* brr = new int[n + 1];
-	FillRand(brr, n + 1);
+	for (int i = 0; i < n; i++)
+	{
+		brr[i] = arr[i];
+	}
+	brr[n] = rand() % 100;
 	n++;
 	delete[] arr;
 	arr = brr;
 }
 void insert(int*& arr, int& n, int var, int index)
 {
-	int* brr = new int[n + 1];
-	FillRand(brr, n + 1);
+	int* brr = new int[n];
+	for (int i = 0; i < n; i++)
+	{
+		brr[i] = arr[i];
+	}
 	if (brr[index]) brr[index] = var;
-	n++;
 	delete[] arr;
 	arr = brr;
 }
