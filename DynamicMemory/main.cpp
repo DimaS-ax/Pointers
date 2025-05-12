@@ -8,10 +8,13 @@ int* insert(int arr[], int& n, int value, int index);
 int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, int index);
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 
 void main()
 {
 	setlocale(LC_ALL, "ru");
+#ifdef DYNAMIC_MEMORY_1
 	int n;
 	cout << "Ввидите размер массива: "; cin >> n;
 	int* arr = new int[n];
@@ -36,8 +39,12 @@ void main()
 	cout << "Введите значение индекса: "; cin >> index;
 	arr = erase(arr, n, index);//Удаляет элемент по индексу
 	Print(arr, n);
-
 	delete[] arr;
+#endif // DYNAMIC_MEMORY_1
+
+
+
+
 }
 void FillRand(int arr[], int const n)
 {
