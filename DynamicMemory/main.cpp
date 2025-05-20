@@ -13,6 +13,7 @@ template<typename T> T* pop_back(T arr[], int& n);
 template<typename T> T* pop_front(T arr[], int& n);
 template<typename T> T* erase(T arr[], int& n, int index);
 
+
 void FillRand(int** arr, const int rows, const int cols);
 void FillRand(double** arr, const int rows, const int cols);
 template<typename T> void Print(T** arr, const int rows, const int cols);
@@ -71,6 +72,8 @@ void main()
 	int cols;
 	cout << "Введите количество строк:"; cin >> rows;
 	cout << "Введите количество эелементов строки:"; cin >> cols;
+
+	
 
 	//Создаем массив указателей:
 	double** arr = new double* [rows];
@@ -267,6 +270,7 @@ template<typename T> T* erase(T arr[], int& n, int index)
 	arr = buffer;
 	return arr;
 }
+
 
 
 void FillRand(int** arr, const int rows, const int cols)
