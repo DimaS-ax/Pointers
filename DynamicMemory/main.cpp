@@ -3,6 +3,7 @@ using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
+int* Allocate(int size);
 void FillRand(int arr[], int const n);
 void Print(int arr[], int const n);
 int* push_back(int arr[], int& n, const int value);
@@ -12,6 +13,7 @@ int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, int index);
 
+int** Allocate(int rows, int cols);
 void FillRand(int** arr, const int rows, const int cols);
 void Print(int** arr, const int rows, const int cols);
 int** push_rows_back(int** arr, int& rows, int cols);
@@ -26,6 +28,7 @@ int** erase_row(int** arr, int& rows, int cols, int index);
 int** pop_col_back(int** arr, int rows, int& cols);
 int** pop_col_front(int** arr, int rows, int& cols);
 int** erase_col(int** arr, int rows, int& cols, int index);
+void Clear(int**& arr, int rows);
 
 #define tab "\t"
 #define delimeter "\n------------------------------------\n"
@@ -38,7 +41,7 @@ void main()
 #ifdef DYNAMIC_MEMORY_1
 	int n;
 	cout << "Ввидите размер массива: "; cin >> n;
-	int* arr = new int[n];
+	int* arr = Allocate(n);
 	FillRand(arr, n); //Заполняет массив
 	Print(arr, n); //Выводит массив
 	int value;
@@ -70,13 +73,7 @@ void main()
 	cout << "Введите количество строк:"; cin >> rows;
 	cout << "Введите количество эелементов строки:"; cin >> cols;
 
-	//Создаем массив указателей:
-	int** arr = new int* [rows];
-	//Выделяем память под строки двумерного динамического массива:
-	for (int i = 0; i < rows; i++)
-	{
-		arr[i] = new int[cols];
-	}
+	int** arr = Allocate(rows, cols);
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 	cout << "Строки" << endl;
@@ -147,14 +144,15 @@ void main()
 	} while (index<0 || index>cols);
 	arr = erase_col(arr, rows, cols, index);
 	Print(arr, rows, cols);
-	//Сначало удаляем строки:
-	for (int i = 0; i < rows; i++)
-	{
-		delete[] arr[i];
-	}
-	//Удаляем массив указателей:
-	delete[] arr;
+	Clear(arr, rows);
+
+	
 #endif // DYNAMIC_MEMORY_2
+}
+int* Allocate(int size)
+{
+	int* arr = new int[size];
+	return arr;
 }
 void FillRand(int arr[], int const n)
 {
@@ -258,7 +256,15 @@ int* erase(int arr[], int& n, int index)
 	return arr;
 }
 
-
+int** Allocate(int rows, int cols)
+{
+	int** arr = new int* [rows];
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+	return arr;
+}
 void FillRand(int** arr, const int rows, const int cols)
 {
 	for (int i = 0; i < rows; i++)
@@ -469,4 +475,12 @@ int** erase_col(int** arr, int rows, int& cols, int index)
 	}
 	cols--;
 	return arr;
+}
+void Clear(int**& arr, int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
 }
