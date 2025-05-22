@@ -14,6 +14,7 @@ template<typename T> T* pop_front(T arr[], int& n);
 template<typename T> T* erase(T arr[], int& n, int index);
 
 
+template<typename T>void Allocate(T** arr, int rows, int cols);
 void FillRand(int** arr, const int rows, const int cols);
 void FillRand(double** arr, const int rows, const int cols);
 template<typename T> void Print(T** arr, const int rows, const int cols);
@@ -29,6 +30,7 @@ template<typename T> T** erase_row(T** arr, int& rows, int cols, int index);
 template<typename T> T** pop_col_back(T** arr, int rows, int& cols);
 template<typename T> T** pop_col_front(T** arr, int rows, int& cols);
 template<typename T> T** erase_col(T** arr, int rows, int& cols, int index);
+template<typename T>void Clear(T** arr, int rows);
 
 #define tab "\t"
 #define delimeter "\n------------------------------------\n"
@@ -72,16 +74,15 @@ void main()
 	int cols;
 	cout << "Введите количество строк:"; cin >> rows;
 	cout << "Введите количество эелементов строки:"; cin >> cols;
-
-	
-
-	//Создаем массив указателей:
-	double** arr = new double* [rows];
-	//Выделяем память под строки двумерного динамического массива:
-	for (int i = 0; i < rows; i++)
-	{
-		arr[i] = new double[cols];
-	}
+	////Создаем массив указателей:
+	//double** arr = new double* [rows];
+	////Выделяем память под строки двумерного динамического массива:
+	//for (int i = 0; i < rows; i++)
+	//{
+	//	arr[i] = new double[cols];
+	//}
+	int** arr = new int * [rows];
+	Allocate(arr, rows, cols);
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 	cout << "Строки" << endl;
@@ -152,13 +153,14 @@ void main()
 	} while (index<0 || index>cols);
 	arr = erase_col(arr, rows, cols, index);
 	Print(arr, rows, cols);
-	//Сначало удаляем строки:
-	for (int i = 0; i < rows; i++)
-	{
-		delete[] arr[i];
-	}
-	//Удаляем массив указателей:
-	delete[] arr;
+	////Сначало удаляем строки:
+	//for (int i = 0; i < rows; i++)
+	//{
+	//	delete[] arr[i];
+	//}
+	////Удаляем массив указателей:
+	//delete[] arr;
+	Clear(arr, rows);
 #endif // DYNAMIC_MEMORY_2
 }
 void FillRand(int arr[], const int n)
@@ -273,6 +275,13 @@ template<typename T> T* erase(T arr[], int& n, int index)
 
 
 
+template<typename T>void Allocate(T** arr, int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new T[cols];
+	}
+}
 void FillRand(int** arr, const int rows, const int cols)
 {
 	for (int i = 0; i < rows; i++)
@@ -495,3 +504,14 @@ template<typename T> T** erase_col(T** arr, int rows, int& cols, int index)
 	cols--;
 	return arr;
 }
+
+template<typename T>void Clear(T** arr, int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+}
+
+
