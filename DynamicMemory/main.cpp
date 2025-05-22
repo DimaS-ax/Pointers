@@ -34,8 +34,8 @@ template<typename T>void Clear(T** arr, int rows);
 
 #define tab "\t"
 #define delimeter "\n------------------------------------\n"
-//#define DYNAMIC_MEMORY_1
-#define DYNAMIC_MEMORY_2
+#define DYNAMIC_MEMORY_1
+//#define DYNAMIC_MEMORY_2
 
 void main()
 {
