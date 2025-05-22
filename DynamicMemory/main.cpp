@@ -354,8 +354,7 @@ template<typename T> T** insert_row(T** arr, int& rows, int cols, int index)
 	{
 		buffer[i] = arr[i];
 	}
-	buffer[index] = new T[cols] {};
-	
+	buffer[index] = new T[cols]{};
 	for (int i = index; i < rows; i++)
 	{
 		buffer[i + 1] = arr[i];
@@ -504,7 +503,6 @@ template<typename T> T** erase_col(T** arr, int rows, int& cols, int index)
 	cols--;
 	return arr;
 }
-
 template<typename T>void Clear(T** arr, int rows)
 {
 	for (int i = 0; i < rows; i++)
