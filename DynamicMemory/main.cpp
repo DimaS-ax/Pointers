@@ -29,7 +29,7 @@ template<typename T>void Allocate(T** arr, int& rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)arr[i] = new T[cols];
 }
-template<typename T>void pushElementBack(T*& arr, int& size, const T& element)
+template<typename T>void pushBack(T*& arr, int& size, const T& element)
 {
 	T* buffer = new T[size + 1];
 	for (int i = 0; i < size; i++)buffer[i] = arr[i];
@@ -38,7 +38,7 @@ template<typename T>void pushElementBack(T*& arr, int& size, const T& element)
 	arr = buffer;
 	size++;
 }
-template<typename T>void pushElementFront(T*& arr, int& size, const T& element)
+template<typename T>void pushFront(T*& arr, int& size, const T& element)
 {
 	T* buffer = new T[size + 1];
 	buffer[0] = element;
@@ -47,7 +47,7 @@ template<typename T>void pushElementFront(T*& arr, int& size, const T& element)
 	arr = buffer;
 	size++;
 }
-template<typename T>void pushElementInsert(T*& arr, int& size, int index, const T& element)
+template<typename T>void pushInsert(T*& arr, int& size, int index, const T& element)
 {
 	T* buffer = new T[size + 1];
 	for (int i = 0; i < index; i++)buffer[i] = arr[i];
@@ -57,7 +57,7 @@ template<typename T>void pushElementInsert(T*& arr, int& size, int index, const 
 	arr = buffer;
 	size++;
 }
-template<typename T>void popElementBack(T*& arr, int& size)
+template<typename T>void popBack(T*& arr, int& size)
 {
 	T* buffer = new T[size - 1];
 	for (int i = 0; i < size - 1; i++)buffer[i] = arr[i];
@@ -65,7 +65,7 @@ template<typename T>void popElementBack(T*& arr, int& size)
 	arr = buffer;
 	size--;
 }
-template<typename T>void popElementFront(T*& arr, int& size)
+template<typename T>void popFront(T*& arr, int& size)
 {
 	T* buffer = new T[size - 1];
 	for (int i = 0; i < size - 1; i++)buffer[i] = arr[i + 1];
@@ -73,7 +73,7 @@ template<typename T>void popElementFront(T*& arr, int& size)
 	arr = buffer;
 	size--;
 }
-template<typename T>void popElementErase(T*& arr, int& size, int index)
+template<typename T>void popErase(T*& arr, int& size, int index)
 {
 	T* buffer = new T[size - 1];
 	int j = 0;
@@ -173,22 +173,22 @@ void main()
 	Print(arr, size);
 	int Element;
 	cout << "Введите элемент для добавления в массив:"; cin >> Element;
-	pushElementBack(arr, size, Element);
+	pushBack(arr, size, Element);
 	Print(arr, size);
 	cout << "Введите элемент для добавления в массив:"; cin >> Element;
-	pushElementFront(arr, size, Element);
+	pushFront(arr, size, Element);
 	Print(arr, size);
 	int index;
 	cout << "Введите индекс для добавления в массив:"; cin >> index;
 	cout << "Введите элемент для добавления в массив:"; cin >> Element;
-	pushElementInsert(arr, size, index, Element);
+	pushInsert(arr, size, index, Element);
 	Print(arr, size);
-	popElementBack(arr, size);
+	popBack(arr, size);
 	Print(arr, size);
-	popElementFront(arr, size);
+	popFront(arr, size);
 	Print(arr, size);
 	cout << "Введите индекс для удаления элемента:"; cin >> index;
-	popElementErase(arr, size, index);
+	popErase(arr, size, index);
 	Print(arr, size);
 	delete[] arr;
 	cout << delimetr;
@@ -201,26 +201,26 @@ void main()
 	Print(Arr, rows, cols);
 	cout << delimetr;
 	int* newRow = new int[3] {};//Объявили новую строку, добавляемую в 2Д массив
-	pushElementBack(Arr, rows, newRow);
+	pushBack(Arr, rows, newRow);
 	Print(Arr, rows, cols);
 	cout << delimetr;
 	int* newRow2 = new int[3] {};//Объявили новую строку, добавляемую в начало 2Д массива
-	pushElementFront(Arr, rows, newRow2);
+	pushFront(Arr, rows, newRow2);
 	Print(Arr, rows, cols);
 	cout << delimetr;
 	int* newRow3 = new int[3] {};//Объявили новую строку
 	cout << "Введите индекс для добавления строчки:"; cin >> index;
-	pushElementInsert(Arr, rows, index, newRow3);
+	pushInsert(Arr, rows, index, newRow3);
 	Print(Arr, rows, cols);
 	cout << delimetr;
-	popElementBack(Arr, rows);
+	popBack(Arr, rows);
 	Print(Arr, rows, cols);
 	cout << delimetr;
-	popElementFront(Arr, rows);
+	popFront(Arr, rows);
 	Print(Arr, rows, cols);
 	cout << delimetr;
 	cout << "Введите индекс для удаления строчки:"; cin >> index;
-	popElementErase(Arr, rows, index);
+	popErase(Arr, rows, index);
 	Print(Arr, rows, cols);
 	cout << delimetr;
 	pushColBack(Arr, rows, cols);
